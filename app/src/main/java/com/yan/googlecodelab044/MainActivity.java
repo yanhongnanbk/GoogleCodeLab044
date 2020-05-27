@@ -3,7 +3,7 @@ package com.yan.googlecodelab044;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.media.Image;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -25,26 +25,11 @@ public class MainActivity extends AppCompatActivity {
         mImageView03 = (ImageView)findViewById(R.id.main_image_froyo);
         mFloatingActionButton = (FloatingActionButton)findViewById(R.id.main_fab);
 
-        mImageView01.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "donut", Toast.LENGTH_SHORT).show();
-            }
-        });
+        showOrder(mImageView01, "donut");
 
-        mImageView02.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "ice cream", Toast.LENGTH_SHORT).show();
-            }
-        });
+        showOrder(mImageView02, "ice cream");
 
-        mImageView03.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "froyo", Toast.LENGTH_SHORT).show();
-            }
-        });
+        showOrder(mImageView03, "froyo");
 
         mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,5 +37,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this,OrderActivity.class));
             }
         });
+    }
+
+    private void showOrder(ImageView imageView, final String s) {
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayToastMessage(s);
+            }
+        });
+    }
+
+    private void displayToastMessage(String s) {
+        Toast.makeText(MainActivity.this, s, Toast.LENGTH_SHORT).show();
     }
 }
